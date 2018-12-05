@@ -1,0 +1,88 @@
+<Script Language=VBScript RunAt=Server>
+Sub Application_OnStart
+   
+   strHelpDeskFolder = "c:\Shared Data\Dev HelpDesk"
+   
+   Application("Database") = strHelpDeskFolder & "\Database\helpdesk.mdb"
+
+   Set Application("Connection") = CreateObject("ADODB.Connection")
+   'strConnection = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Application("Database") & ";"
+   strConnection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Application("Database") & ";"
+   Application("Connection").Open strConnection
+
+   Application("Visitors") = 0
+
+End Sub
+</Script>
+
+<Script Language=VBScript RunAt=Server>
+Sub Session_OnStart
+
+   strHelpDeskFolder = "c:\Shared Data\Dev HelpDesk"
+
+   'Build the SQL string for Status
+   strSQL = "Select SendMailTo,SendMailFrom,BBC,AdminURL,SchoolName,EMailSuffix,MainPageText,"
+   strSQL = strSQL & "UserCanViewCallStatus,SMTPPickupFolder,UseAD,UseCustom1,Custom1Text," 
+   strSQL = strSQL & "UseCustom2,Custom2Text,IconLocation,Theme,UseTaskList,UseDocumentation," 
+   strSQL = strSQL & "UseStats,UseUpload,ADUsername,ADPassword,DomainController,ShowUserStats,"
+   strSQL = strSQL & "ShowUserButtons,Version,SendReminder" & vbCRLF
+   strSQL = strSQL & "From Settings;"
+      
+   Set objRecordSet = Application("Connection").Execute(strSQL)  
+
+   Application("AdminEMail") = objRecordSet(0)
+   Application("SendFromEMail") = objRecordSet(1)
+   Application("BCC") = objRecordSet(2)
+   Application("AdminURL") = objRecordSet(3)
+   Application("SchoolName") = objRecordSet(4)
+   Application("EMailSuffix") = objRecordSet(5)
+   Application("MainPageText") = objRecordSet(6)
+   Application("UserCanViewCallStatus") = objRecordSet(7)
+   Application("SMTPPickupFolder") = objRecordSet(8)
+   Application("UseAD") = objRecordSet(9)
+   Application("UseCustom1") = objRecordSet(10)
+   Application("Custom1Text") = objRecordSet(11)
+   Application("UseCustom2") = objRecordSet(12)
+   Application("Custom2Text") = objRecordSet(13)
+   Application("IconLocation") = objRecordSet(14)
+   Application("Theme") = objRecordSet(15)
+   Application("UseTaskList") = objRecordSet(16)
+   Application("UseDocs") = objRecordSet(17)
+   Application("UseStats") = objRecordSet(18)
+   Application("UseUpload") = objRecordSet(19)
+   Application("ADUsername") = objRecordSet(20)
+   Application("ADPassword") = objRecordSet(21)
+   Application("DomainController") = objRecordSet(22)
+   Application("ShowUserStats") = objRecordSet(23)
+   Application("ShowUserButtons") = objRecordSet(24)
+   Application("DBVersion") = objRecordSet(25)
+   Application("SendReminder") = objRecordSet(26)
+   Application("DocLocation") = strHelpDeskFolder & "\docs"
+   Application("FileLocation") = strHelpDeskFolder & "\uploads"
+   Application("ThemeLocation") = strHelpDeskFolder & "\site\themes"
+   Application("Domain") = Right(Application("EMailSuffix"),Len(Application("EMailSuffix")) - 1)
+   Application("WebVersion") = "1.02"
+   Application("Visitors") = Application("Visitors") + 1
+   Application("MobileSiteWidth") = 400
+   Application("AdminLogInDays") = 14
+   Application("UserLogInDays") = 2
+   Application("ForceSSL") = True
+   Application("RemoteSupportLink") = ""
+   Application("TSCHelpDesk") = ""
+   
+   If Application("WebVersion") <> Application("DBVersion") Then
+      Application("VersionError") = True
+      Application("Version") = "0"
+   Else
+      Application("VersionError") = False
+      Application("Version") = Application("WebVersion")
+   End If   
+   
+End Sub
+</Script>
+
+<Script Language=VBScript RunAt=Server>
+Sub Session_OnEnd
+   Application("Visitors") = Application("Visitors") - 1
+End Sub
+</Script>

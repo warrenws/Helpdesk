@@ -1,0 +1,210 @@
+body {
+   text-align: center; 
+	background-color:#FFFFFF;
+	font-family:'Marker Felt','Comic Sans MS',Arial, Helvetica, sans-serif;
+	color:#000000;
+}
+	
+a:link {
+	color:#0000CC;
+}
+
+a:visited {
+	color:#0000CC;
+}
+
+.missing {
+	font-weight:bold;
+	color:red;
+}
+
+.good {
+	font-weight:bold;
+	color:green;
+}
+
+.information {
+	font-weight:bold;
+	color:Green;
+}
+
+.usersupdate{
+	margin-left:auto; 
+	margin-right:auto; 
+	width:150px;
+	position:relative;
+	right:280px;
+	top:-835px;
+	font-size:1em;
+}
+
+input.fileupload {
+   	font-family:"Arial";
+}
+
+input.fileuploadchrome {
+   	font-family:"Arial";
+      color:#FFFFFF;
+}
+
+.separator {
+	
+}
+
+div.header {
+	text-align:center;
+	font-weight:bold;
+	margin-left:auto; 
+	margin-right:auto;
+	width:750px;
+}
+
+div.version {
+	margin-left:auto; 
+	margin-right:auto; 
+	width:115px;
+	position:relative;
+	right:-330px;
+	top:-20px;
+	font-size:1em;
+}
+
+ul.settingstopbar {
+	list-style-type:none;
+	margin-top:-10px;
+	margin-bottom:none;
+}
+	
+ul.topbar {
+	list-style-type:none;
+	margin-top:none;
+	margin-bottom:none;
+	padding: 0;
+	margin-left: 0;
+}	
+
+li.topbar {
+	display:inline;
+}
+
+div.admintopbar {
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto; 
+   margin-top:-7px;
+   margin-bottom: -7px;
+	width:750px;	
+}
+
+hr.admintopbar {
+	margin-left:auto; 
+	margin-right:auto;
+   margin-top:-10px;
+	width:750px;
+}
+
+hr.adminbottombar {
+	margin-left:auto; 
+	margin-right:auto;
+	width:750px;
+}
+
+hr.adminbottombarIE {
+	margin-left:auto; 
+	margin-right:auto;
+   margin-top:-10px;
+	width:750px;
+}
+
+div.usertopbar {
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto; 
+   margin-top:-7px;
+   margin-bottom: -7px;
+	width:750px;	
+}
+
+hr.usertopbar {
+	margin-left:auto; 
+	margin-right:auto;
+   margin-top:-10px;
+	width:750px;
+}
+
+hr.userbottombar {
+	margin-left:auto; 
+	margin-right:auto;
+	width:750px;
+}
+
+.mainarea {
+   align:center; 
+	margin-left:auto;
+	margin-right:auto;
+   text-align: left;
+	width:750px;
+	border:0px solid black;
+}
+
+img.mainareaimage {
+	float:left;
+	border:0px solid black;
+}
+
+.mainareatext {
+	margin-left:210px;
+	margin-right:0px;
+	width:540px;
+	border:0px solid black;
+}
+
+table {
+	border-collapse:collapse;
+   border: 0px solid black;
+}
+
+td {
+	border: 0px solid black;
+}
+
+tr {
+   text-align:left;
+}
+
+th {
+   text-align:center;
+   border: 0px solid black;
+}
+
+table.showborders {
+   border-width: 1px
+   border-spacing: 0px;
+   border-style: outset;
+}
+
+td.showborders {
+   border-width: 2px;
+   padding: 0px;
+   border-color: gray;
+   border-style: inset;
+}
+
+input {
+	margin-bottom:3px;
+}
+
+select {
+	margin-bottom:3px;
+}
+
+.submitinfo {
+	width:525px;
+	position:relative;
+	left:0px;
+	right:0px;
+	top:210px;
+	bottom:0px;
+	font-size:1em;
+	border:0px solid black;
+}

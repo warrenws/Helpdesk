@@ -1,0 +1,76 @@
+html{
+	overflow: hidden;
+}
+a:link {
+	color:blue;
+}
+a:visited {
+	color:blue;
+}
+iframe{
+	margin-top: 5px;
+	height: 200px;
+	width: 650px;
+	padding: 5px;
+	background-color: #222;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+body{
+	background: whiteSmoke;
+	overflow: hidden;
+	font-size: 130%;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline;
+}
+iframe:not([seamless]){
+	overflow: hidden;
+	border: 0;
+	font-size: 110%;
+	
+}
+iframe.bottom{
+   margin-top: 5px;
+	height: 125px;
+	width: 1315px;
+	padding: 5px;
+	background-color: #222;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#topContent{
+	display: inline-block;
+	width: 100%;
+	height: 34px;
+	position: absolute;
+	top:0;
+	left: 0;
+	color: whiteSmoke;
+	line-height: 34px;
+	background-color: #222222;
+}
+#schoolHeader{
+	font-size: 125%;
+	text-align: center;
+   }
+#bottomContent{
+	display: inline-block;
+	width: 100%;
+	height: 34px;
+	position: absolute;
+	bottom:0;
+	left: 0;
+	color: whiteSmoke;
+	line-height: 34px;
+	background-color: #222222;
+}
+.highlight{
+	background-color: yellow; 
+	
+}
+#spaceBar{
+	height: 35px;
+}

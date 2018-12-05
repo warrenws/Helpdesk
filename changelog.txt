@@ -1,0 +1,463 @@
+Change Log - Help Desk
+
+0.6a Beta - Released 10/13/04
+   - First version in use.
+
+0.7 Beta - Released 12/7/04
+   - Added ability to add multiple addresses to the Admin Email field in the setup page.
+     Separate each Email with a semicolon.
+   - It will now verify that the BBC field has a value before it tries to use it.
+   - Added a Colors table to the database, and LnkColor, Infocolor, and WarningColor, to 
+     the Settings table.
+   - Added a pull down menu on the settings page to choose your color scheme.
+   - Added users email address to the admin email.
+   - When you assign a call to a tech it will send an email letting them know.  This required
+     adding the techs email address to the database
+   - Setup user levels.  You have to have the correct rights on an NTFS level to get to the
+     admin page.  Then it will verify you are a registered tech, meaning you can have calls assigned
+     to you.  If you are registered it will look at your userlevel.  If you are just a
+     user, or a non registered tech you will not be able to see the setup pages.  If you are
+     an Administrator you will be able to see them.
+   - Moved the database connection to the global.asa file.  Now only one connection object is used.
+   - Added Database Statistics to the main admin page.
+   - Changed the admin page queries.  You can now select multiple settings to query at once.
+   - Added a View All feature to the Modify Category/Location/tech page.
+   - Changed the view page to display the data in a more friendly way.  It will also display
+     notes if they exist and the date a call was closed.  The page is more printer friendly.
+   - A print button has been added to the page where you modify a call.  It opens a new page
+     that displays the text in a printable format.
+   - Added more descriptive text to setup.asp
+   - Major code cleanup and documentation.
+
+0.7a Beta - Updated 4/1/05
+   - Update that fixed a problem with Exchange 2003 and Exchange 2000 SP3.
+     More Info - http://support.microsoft.com/?kbid=816789
+   - Modified Lines 201, 261-275 in index.asp.
+   - Modified Lines 413, 459-472 in admin\modify.asp
+   
+0.8 Beta - Released 9/13/05
+   - Users can now view the status of their calls from the main page.
+   - The list of calls is now sorted from newest to oldest.
+   - UserCanViewCallStatus was added to the setup table and the Global.asa file.  This will
+     allow that admin to choose weather or not a user can view the status of their calls.
+   - Carriage returns are now displayed properly in HTML for the Notes and Problem fields on 
+     the print and view pages.
+   - When a tech is assigned a ticket an email is set.  A spelling mistake has been corrected
+     and a link to the ticket has been added to the email.
+   - Documented ASP code that was mixed with HTML
+   - Added SMTPPickupFolder to the database settings table and the global.asa
+   - Added the ability to change the SMTP pickup folder path from /admin/setup.asp
+   - Changes from 0.7a added
+
+0.8b Rev 2 - 9/2/11
+   - Added Sort By box to admin page.
+   - Fixed a problem where notes weren't displayed properly on the users view page.
+   - Changed the number of decimal places in the percent of open tickets to 5.
+   - Removed the word "Computer" from the title.
+   - Added a link to view all open tickets to the modify page that displays after you update
+     a ticket.
+   - when you assign a ticket to a tech and close it the tech won't be notified.
+   - When you view users on the add page it will show you thir role.
+   - Added Scroll bars and the ability to reize to the pop up window that show techs, 
+     categories, or locations.
+   - Users will be notified via email when a help desk ticket is closed if they are allowed 
+     to see there past tickets. 
+   - Added a statistic to the admin page that shows the average length of time tickets are open.
+   - When you update a ticket it will now log in the database how many minutes the ticket is open. 
+   - Added a link to the admin page that will allow a user to see all their open tickets.
+   - Added a lookup feature where it will query Active Directory to get the users full name.
+   - When a ticket is added the Name field is changed to match the username from the email address.
+   - Added icons for iPad / iPhone shortcuts.
+   - Added Custom1 and Custom2 fields.
+   - Changed the name of items to tickets.  In some places they were calls, in others they were tickets.
+
+0.81b - Not Released
+   Dev 1
+   - Fixed Open All Tickets link in admin/modify.asp
+   Dev 2
+   - Added a Return to Previos Page link after the user submits a ticket. /index.asp
+   - Added the ability to auto assign tickets based on location.  ASP file has to be edited directly for
+     this and hacks have to be enabled.  /index.asp
+   Dev 3
+   - Fixed a problem where the modify page wouldn't display right on iPads. /admin/modify.asp
+   - Fixed a problem with the title of the view page when the user had no tickets returned. /view.asp
+   - Fixed a problem with enabling AD support on the setup page. /admin/setup.asp
+   Dev 4
+   - User must change status when ticket is auto assigned. /admin/modify.asp
+   - Removed landing page when ticket is updated.  It now notes on the page that the ticket is updated. 
+     /admin/modify.asp
+   - Added "Update User" button to modify page. /admin/modify.asp
+   - Updated classic CSS sheet to show borders on some cells. /themes/classic/classic.css
+   Dev 5
+   - Added an icon to the web app. Icon location can be set in the setup page.
+   - Added the ticket number to admin/modify.asp
+   Dev 6
+   - Changed default status to "Any Open Ticket" on the admin page. /admin/index.asp
+   - Changed the view page so you can pass your own querries in the address bar. /admin/view.asp
+   - Added other as an option for a place. /index.asp /admin/index.asp
+   - Fixed problem with CRLF not changing to <br /> in the Problem field.  /admin/view.asp
+   Dev 7
+   - Added a search option to the admin page. /admin/index.asp
+   - Added the User field to the query section of the adming page. /admin/index.asp
+   - Added a count of returned ticets to the top of the admin view page. /admin/view.asp
+   Dev 8
+   - Converted add page to CSS. /admin/add.asp
+   - Updated Classic CSS to properly support centering in Internet Explorer /themes/classic/classic.css
+   - Changed it so access to the admin section is denied if you are not listed as an active user. 
+     /admin/add.asp, /admin/index.asp, /admin/setup.asp, /admin/view.asp.
+   - Changed the format of emails sent to tech's so the usefull information is on top.  This way it looks
+     good on the iPhone. /index.asp /admin/modify.asp
+   - And email will be sent to a tech if they are no longer assigned a ticket and someone else 
+     reassigned it. /admin/modify.asp.
+   - Added support for automatically resizing on an iPad. /index.asp, /view.asp, /admin/index.asp,
+     /admin/setup.asp, /admin/add.asp /admin/view.asp, /admin/modify.asp
+   Dev 9
+   - Added the ability to upload a file when you submit a ticket. /index.asp /admin/modify.asp
+     Need to add /uploads folder
+   Dev 10
+   - Updated all pages to CSS for font and colors.
+   - Created Classic2 theme.
+   Dev 11
+   - Added Request Update button to the modify page. /admin/modify.asp
+   - Removed Colors table from database.
+   - Removed TxtColor, BGColor, LnkColor, InfoColor, WarningColor from Settings table in the database.
+   - Added Theme to the Settings table in the database.
+   - Updated global.asa file to reflect database changes.
+   - Modified the setup page to allow the user to choose the theme they want. /admin/setup.asp
+   - Added an Open Ticket button to closed tickets.  /admin/modify.asp
+   - Added the ability to sort by tech.
+   Dev 12
+   - Added the ability to go back to the query results from the modify page. /admin/view.asp 
+     /admin/modify.asp
+   - Removed the search section and added it to the query section.  /admin/index.asp /admin/view.asp
+   - A tech can now add an attachement from the modify page.  Limit one attachment per ticket.
+     /admin/modify.asp
+   - Added a stats page.  /admin/stats.asp
+   Dev 13
+   - When a user requests an update they will recieve an email once the ticket is updated.  A new database
+     field name UpdateRequested had to be added to the main table.  /admin/modify.asp
+   - On the admin page a message will display if any updates have been requested. /admin/index.asp
+   - Added Other to the list of locations on the modify page.  /admin/modify.asp
+   - On the admin page a message will display if you have requested any updates and you are still
+     waiting for a response.  /admin/index.asp
+   Dev 14
+   - Added an activity log to the tickets.  /admin/modify.asp /index.asp added log table to database.
+   - Tech's time is tracked individually per ticket.
+   Dev 15
+   - Added the ability for an admin to track a ticket. /admin/modify.asp /admin/index.asp
+   - When you try to save a ticket that is set to Auto Assigned it will change automatically to In Progress
+     /admin/modify.asp
+   Dev 16
+   - Added automatic acknowledgement system.  /index.asp /admin/index.asp /admin/modify.asp /admin/view.asp
+   Dev 17
+   - Changed menu on all admin pages.
+   Dev 18
+   - Changed the order of the log.  Now the last item should be status changed to complete on closed tickets.
+   - Added an Update Tech button.
+   - When you hit Show Log or Hide Log on the modify page it will now keep the contents of the form.
+   - Fixed a bug that would display a blank page if someone entered an i/nvalid ticket number on the 
+     modify page.
+   Dev 19
+   - Added a show log button that will show the last n changes to the database on the admin page. 
+     /admin/index.asp
+   Dev 20
+   - Added a the ability to choose how far back you want to go in the reports. /admin/index.asp /admin/view.asp
+   Dev 21
+   - Updated Stats page.
+   - Fixed bug with Right statement in /admin/modify.asp
+   Dev 22
+   - Added the ability to manually enter a ticket for someone else. /index.asp /admin/index.asp
+   - Created a page that can be used to repair some data in the database /admin/dbtools.asp
+   - Fixed the problem where the phone number would be removed if something else was missing 
+     when submitted. /index.asp
+   Dev 23
+   - Fixed a bug where files weren't being attached on the admin page. /admin/modify.asp
+   - When a ticket is closed it is now marked as viewed. /admin/modify.asp
+   Dev 24
+   - Redesign the site to work better on the iPhone and iPad. admin/index.asp admin/view.asp
+     /admin/modify.asp /admin/stats.asp /admin/setup.asp /admin/add.asp /admin/dbtools.asp
+     /themes/classic2/classic2.css
+   Dev 25
+   - Added a new role. (Data Viewer) /admin/modify.asp /admin/index.asp /admin/status.asp 
+     /admin/view.asp 
+   - You can now modify the properties of a user. /admin/add.asp /admin/popup.asp
+   - Updated the classic2.css to have the info tag in the correct spot on /admin/add.asp
+   - Updated all admin pages to use CSS for the heading so they all match.
+   - Changed heading for admin and renamed add.asp to users.asp
+   - Active Directory is now used to get the users email address.
+   - Added a page that will allow for minor changes to the database. /admin/dbtools.asp
+   Dev 26
+   - A ticket will change automatically from New Assignment to In Progress when saved.
+   - Fixed title on Admin Home, wasn't bold.
+   - A New Assignment being assigned to someone will properly be logged.
+   - Fixed icons when a shortcut is created on iOS.
+   - The "Enter a new ticket" section won't show if UseAD is off.
+   - Fixed a bug in DBTools where you could mark a ticket as viewed even if no tech was assigned.
+   - You can choose to display the system message at the top or bottom of the page now.
+   - Removed the Add File section when a ticket is closed.
+   - Fixed width on iPhone version when no tickets are returned.
+   - Changed the deny page so it displays properly on iPhones.
+   - Change the system message to not display "System Message" at the top.
+   Dev 27
+   - Fixed a bug with logging.  If someone updated the notes and there was an ' it would fail.
+   - Recreated the tracking system so more than one person can track a ticket or request updates.
+   - Added a message to Admin Home that will list unviewed tickets.
+   - Fixed average ticket time on Admin Home.
+   Dev 28
+   - Fixed a bug with the new tracking system that wouldn't turn off tracking after a ticket was
+     closed.
+   - Changed the modify tech section so it updates all the tickets when you change a techs name.
+   - Added the ability to Use Active Directory to change the name of a tech.
+   - When adding a user you can now use Active Directory to get the tech's information.
+   - Added a system for changing the contents of the emails that get sent from the help desk.  At
+     this point only one message can be modified.  Others will be added in a later version.
+   - Added a script that can be used to make someone an Admin in the database.
+   - Updated scrtipt files so they don't need to be editied before running.  They will get the location
+     of the database and required settings from the database.
+   Dev 29
+   - Fixed a bug with New Assignement not being set when hacks are disabled.
+   - Fixed buttons in IE when modifying a user on the user page.
+   - Modified scripts that send email notifications about old tickets and unviewed tickets so they will
+     grab the SMTP Pickup Folder location from the database.
+   - Fixed a bug when you try to close a ticket and the category hasn't been set.  It would say you cannot 
+     edit a completed ticket.
+   - Fixed a bug that would prevent you from adding a category.
+   - Added the ability to Delete a tech, category or location.
+   - Fixed a bug where closed tickets weren't being marked as viewed.
+   - Introduced User and Admin mode of help desk.
+   - Admin users can now pick the theme they want independent of the system them.
+   - Created multiple themes
+   - Added the ability to send the contents of a ticket to any email address.
+   - Added more emails to the the message page.
+   - Added the ability to change all tickets under one user to another on the DB Tools page.
+   Dev 30
+   - Changed "When" to "Submitted" on admin home to make it clear that the date is when the ticket was submitted.
+   - Changed "Modify" to "Remove" when deleting or disabling object on users page to not confuse it with the
+     section that modifies a user.
+   - In the submitted section on the admin home you can now look for tickets older then a certain age.
+   - Modified the view page so you can pass a date variable through the URL to view all tickets either modified
+     or submitted on a particular date.
+   - Added a log event for when a ticket is entered and not auto assigned.
+   Dev 31
+   - Tracking updates weren't going out unless the person tracking closed the ticket.  This is now fixed.
+   - If you emailed a ticket to someone else it would incorrectly log it as an email to the tech.  This is now fixed.
+   - If a ticket was updated from an iPhone it wouldn't include the custom fields.  This is now fixed.
+   - Added logging when you send a ticket to someone.
+   - Added an icon of a lock to the modify page and view page if a ticket is completed.
+   - Fixed a bug with logging that wouldn't log a notes updated if it the notes were over 255 characters.
+   - Changed the image file names to more generic names to make it more obvious what they are for.
+   - Added number of tickets submited today to the main admin page.
+   - Added number of tickets completed today to the main admin page.
+   - Added a second stats page that shows number of tickets per day.
+   - When a ticket is added by someone else it will record who entered the ticket.
+   Dev 32
+   - Added charts to the Stats section
+   - Removed percent open from the admin home page.
+   - If hacks are disabled the ticket will be assigned "New Assignment" properly
+   - Changed wording in the section where you can send a ticket to someone else based on feedback from Al Graham.
+   Dev 33
+   - Added feedback page for users to submit feedback.
+   - Added script that will request feedback from all users who's tickets were closed the day before.
+   - Added feedback page that techs can use to see the feedback results.
+   - Added added link to tech feedback page in stats session.
+   - Added support for Android devices.  They will have the same interface as an IOS device.
+   - Fixed the formatting of pages when viewed on tablets.
+   - Fixed spelling error in email that goes out when a ticket is closed.
+   Dev 34
+   - Added a hack that would send email to the user telling them about the new ticket if a ticket was entered 
+     by someone else.
+   - Added a link on the mobile page to switch to the full page.
+   - Added the option to disable the mobile version of the website.
+   - Changed feedback to round to two places.
+   - Fixed the way the site is displayed on an iPhone when switched to full mode.
+   - Fixed the way the modify page is displayed on Android devices.
+   Dev 35
+   - Added a task list
+   - Added a document storage area
+   - Both the task list and the document storage area are a work in progress at this point.
+   - Added the ability to turn off the stats page.
+   - Updated the feedback page to block ratings that aren't 1-5.
+   - Fixed IE formating issues in the messages, settings and modify pages.
+   - Fixed a problem with the request for feedback script.  It wouldn't move to the next record if the tech and user
+     were the same.
+   - Updated the site so it works well with BlackBerry devices.
+   - Updated the site so it works well with the Nintendo 3DS.
+   - Fixed a bug with the iPhone version of the modify page.  If any of the hidden fields had a quote it wouldn't 
+     format properly.
+   - When a non-admin was entering a ticket for someone else they would get an access denied error.  That has been
+     fixed.  It will now check the users role and redirect them to the admin page if they are an admin.
+   - Added the ability to delete documents in the docs page.
+   - Added the ability to add &Tech=TechName to the URL on the view page when viewing all tickets worked on in a day.
+   - Added a checkin table that will show where techs are if they use the checkin web app to check in.
+   - Fixed a formating issue on the setup page on android devices.
+   - Added a prompt to the docs page when deleting data.
+   - Fixed the Use AD button on the Users page when Using AD is disabled.
+   Dev 36
+   - When the user submits a ticket it would try to get their display name using AD.  Before if it failed it would change
+     the Name to the first part of the users email address.  It now keeps what the user typed in.
+   - Now when you click New Ticket with the username blank on the admin page it will bring you to a blank help desk ticket.
+   - When entering a new ticket for someone if the email suffix doesn't match it won't try to do an AD lookup.
+   - When you enter a ticket for someone else it will redirect you to the newly created ticket.
+   - When a ticket is entered with an email address of help@wswheboces.org it won't change the Name.
+   - Modified the code to insert a ticket into TSC if assigned to Erwin.
+   - Fixed a problem on the iPhone version of the modify page that would prevent it from working if you didn't use custom fields.
+   - Changed the default icon location to http://help.wswheboces.org/icons
+   - Added support for Nexus 7
+   - Fixed a bug that would cause incorrect numbers if a user had 0 tickets on the stats page.
+   - Fixed a bug that would cause blank values for total number of tickets per location on the stats page.
+   - Change the stats page to display the same number of top users as techs so the columns are the same height.
+   - Fixed a problem on the graph stats page that would prevent tickets per day to show if a day had 0 tickets.
+   - Changed the graph stats page to only show the top 10 techs and locations
+   - Changed the graph stats page to shorten the site name on the pie chart and bar chart so they fit.
+   - Added a remote page to the admin section.  This can be used at the remote help desk location to monitor new tickets as
+     they come in.
+   - Fixed the mobile site on devices running Android 4 or later.
+   - Improved the task list feature
+   - Fixed a bug when you tried to use Active Directory to add a user who didn't exist, or doesn't have an email.
+   - Changed the script that sends messages to all techs about unassigned tickets.  It will only send to active techs now.
+   - Fixed a problem with how text was displayed on the view page when multiple lines are used to display
+     something in the heading.
+   - Added missing boarders to docs page on Up One Level link.
+   - Added error detection to the users index.asp page.  In the past if there were errors it would show a blank
+     page.  Now it will tell you what the error is.
+   - Added the ability to turn off file uploads when a user submits a ticket.
+   - Fixed a bug in the way tech time was being calculated.  Created a script called Fix Tech Times that can be used to 
+     correct the bad entries.
+   - Added an option to display a link on the submit page for remote support.
+   - Created a widget page that can be used to show a small window with information about the help desk.  Currently
+     it show either general stats, location info, or tech info.
+   - Fixed the popup page.  If it was called without a query it would crash the worker process on the server.  Also
+     added security so you have to be an admin to see it.
+   - Fixed the print page.  It used to be called printcall, but now it is called print.  This name was left over from 0.8b Rev 2.
+     Also added security so you have to be an active tech to view the page.
+   - Added DocType information to all the pages to fix compatibility with IE 10 on Windows 8.
+   - Fixed a bug that would cause an Access Denied error if a disabled tech entered a ticket for someone else.
+   - Fixed a bug that would not display a user's name in the log if Use AD was enabled, and the account wasn't found in AD.
+   - Added links to the view page so you can jump to a list of open tickets based on Tech, User, Location or Category.
+   - Fixed a bug that would crash the Users page if someone deleted the last user, category, or location.
+   - Turned the ticket number on the view page into a link that brings you to the modify page for the ticket.
+   - When you delete or disable a user all their tickets will be assigned to nobody.
+   - Fixed a bug that would crash the submit page if there was a semicolon at the end of the admin list
+   - Fixed a bug that would prevent email from being sent on the modify page if Use AD was on, and the techs name was not
+     in the right format (Firstname Lastname)  If the account is in the wrong format it defaults to sending the email
+     from the admin account.
+   - Added a button to the Database Tools page that will allow you to put all your techs in the correct format. 
+     (Firstname Lastname) It will update all tickets that the tech has been assigned to the new name.
+   - Fixed a bug that would break some stats when renaming a user.  Before it wouldn't update the log information.
+   - Added the ability to set a date range on the stats page.
+   - Added a User History button to the modify page.  Now you can jump to a list of all the user's past tickets.
+   - Updated scripts so they will run with either the jet engine or the access engine.
+0.9 Released 5/6/14
+   - Added Open Tickets and View Tickets buttons to all pages in the mobile version of the site.
+   - Allowing mobile version on Nexus 7.
+   - Fixed a bug sending tickets to Erwin's help desk if the user had a ' in their name.
+   - Added support for Windows Phone.
+   - Fixed a bug that would prevent printing a ticket if it was never modified.
+   - Added stats to the mobile version of the site.
+   - Add a feature that will turn URL's into links when viewing a list of tickets.
+   - Added User History to the mobile version of the site.
+   - Added lock image to closed tickets on mobile version of the site.
+   - Added viewed status icon to mobile version of the site.
+   - Added links on the mobile view page so you can jump to a list of open tickets based on Tech, User or Location.
+   - Added the amount of time a ticket is open to the mobile version of the site.
+   - Added a feature that will let a tech hide a portion of notes from the user.  If you put ---- on a line by itself in the
+     notes section anything below that will not be visible by the user.
+   - Added category to the view page on the mobile version of the site and made it a link that shows all open tickets
+     in that category.  Category won't display if it's not set.
+   - Rearranged items on the view page on the mobile version of the site to make it easier to click links.
+   - Added date and time submitted and date and time updated to mobile version of modify page.
+   - Created an asp page to upgrade the database called dbupgrade.asp.  This will make it easier to upgrade the database.
+   - Replaced Full Version button with a Settings button on mobile version of the site.
+   - Added a search page to the mobile version of the site. 
+   - Fixed a bug on the mobile version of the site that wouldn't display the custom fields properly.
+   - Added the ability to view attachments from the mobile version of the site.
+   - Added the ticket log to the mobile version of the site.
+   - Added the ability to send a ticket to someone else on the mobile version of the site.
+   - Updated the charts stat page to only show techs who are still in the system, either disabled or enabled.
+   - Changed the modify page by removing the text box for the problem field.  The field is still there, it's written to
+     the page like the mobile version of the site.
+   - Modified the admin site so it can run in IIS with anonymous authentication.  Created a form based sign on screen.
+   - Added the ticket number to the title of the page on the modify page for both the normal and mobile versions.
+   - Added Submitted drop down list to the mobile search page.
+   - Added a summary page to the stats section that matches the stats on the mobile version.
+   - Added the ability to detect tablets.  If you have an iPad or Nexus 7 you can choose to run the full or mobile versions
+     independently of the mobile device setting.  You can also choose to zoom the site when on a tablet.
+   - Converted the code that detects if you are on a mobile device or tablet into functions to make it easier to add devices.
+   - Modified the user site so it can run in IIS with anonymous authentication.
+   - Cleaned up the user's view page, removed extra data the user won't care about.
+   - Added the ability for a user to request an update, track their tickets, or close their own tickets.
+   - Added user stats to the screen where users enter tickets.
+   - Moved remote support link to the left hand side under the image on the screen where users enter tickets.
+   - Removed reset button from main user page and moved the submit button to the right.
+   - Created mobile version of user site.
+   - Added the ability to turn on and off user stats
+   - Added the ability to turn on and off the users buttons for tracking, updates and closing tickets.
+   - Added the ability to enter new tickets from the admin mobile site.
+   - Fixed a bug if users had a ' in their name when signing in.
+   - Changed the login page so it will accept email address or legacy user names when signing in.
+   - Fixed a bug in the admin message that wouldn't handle carriage returns and line feeds properly
+0.901
+   - The version is now stored in the database as well as the global.asa.  If they don't match a message will be displayed.
+   - Fixed a bug in the CreateSession routine.  It was setting the wrong expiration date for users in the database. 
+   - Fixed a bug on the login page that would create a loop if the UserAgent changed since last login.
+   - Added the ability to automatically assign tickets to a tech based on the location.
+   - Changed the way the DBUpgrade page works.  You can now change the Domain Controller without retyping the password.
+   - Turned on the mobile site by default for new accounts.
+   - Fixed a bug in the HideText function that would cause a problem if you had ---- as the first thing in the field.
+   - Add a notification area to the user's page.  It will let them know if they are tracking tickets, or have any outstanding 
+     requests for updates.
+   - Added the ability to automatically set the location using the clients IP address.
+   - Added the ability to send a reminder message to someone if a ticket is entered for them by someone else.
+   - Fixed a bug in the access denied routine that would create a redirection loop in certain situations.
+   - Improved device detection.
+   - Fixed the way buttons are displayed on the modify page when they have to wrap to the next line.
+   - Fixed a bug on the mobile version of the site that would cause a blank page to appear if an invalid ticket was 
+     specified when looking up a ticket.
+1.0 Release 6/16/2014
+   - Roll up to version 1.0.
+1.01 Release 11/21/2014
+   - Fixed a bug on the detailed stats page that wouldn't allow you to set the date range.
+   - Fixed the admin login page to set the correct number of days to keep the cookie.
+   - Added device detection for Android Wear watches.
+   - Added a new version of the site for Android Wear watches.  It allows admins to view all tickets or only their own.
+     It also allows them to request updates, track tickets, and update the user and tech.  The interface is designed
+     to be a view only interface.
+   - Changed the way emails are sent when auto assignments are used.  Prior to the change if you were a tech who receives
+     all new tickets, and assigned to a location you would receive two messages.  One for the new ticket, and one for
+     the assignment.  Now it will drop the new ticket email and only send you the new assignment email.
+   - Added a new page that shows all the top users.  Clicking Top Users on the Detailed Stats page will display it.
+   - Fixed a bug in the code that changes URL's to links.  If only HTTP or HTTPS were entered it would created a bad link.
+   - Fixed a bug in the order the user's view page changed URL's to links.  It wasn't handling CRLF's properly.
+   - Added detection for iframes in the problem field.
+   - Added the ability to redirect users to SSL if needed.  Setting can be found in the global.asa file.
+   - Fixed a bug in the task list feature that would cause problems if there was an apostrophe in a list name.
+   - Added a notification to the task screen that let's you know when it's been saved.
+   - Fixed a bug on the task screen that would not show saved notes.
+   - Fixed a bug on the task screen that would cause an error if an invalid task number was passed to it.
+   - Changed the name of Task List to Tasks so it fits on the screen better.
+   - Added charts to kiosk mode.
+   - Added support for the Amazon Fire HD 6.
+   - Fixed the feedback module so it works with the new authentication system.
+   - Updated the mobile admin site by moving the extra items from the search page to the main page.  They seem to fit better
+     on the bigger phones.
+   - Added JavaScript to the admin page so when you click on a text box that has "Any" it will clear itself.
+   - Fixed a bug in the view page that would cause it to load all tickets if it lost it's post data.  If that happens now you'll
+     be redirected to the main page instead of loading all tickets.
+   - Added support for the Nexus 9.
+1.02 Released 9/25/2015
+   - Moved the default location for the icons away from WSWHEBOCES to Lake George.
+   - Added support for Android 5.0 Lollipop's new colored address bar.
+   - Added the Nexus 9 to device detection.
+   - Created a mobile version of the user feedback page.
+   - Added support for the Samsung Galaxy Note 8.
+   - Fixed a bug that would still show the stats page on the mobile site if the stats were disabled.
+   - Fixed the way the user submit page displays the name and email text box on some browsers and tablets.
+   - Changed the zoom level on Windows Phone so it fits properly on the screen.
+   - Changed the logon screen so the input fields are the same size on Windows Phone.
+   - Changed the second custom field to check and see if it was set to "Phone" before it attempts to look up the phone number.
+   - Set the code that gets the users phone number to return N/A if the account starts with a two digit number.  This is so 
+     student accounts that start with numbers won't have to provide a phone number.
+   - Fixed a bug in GetFirstandLastName that would crash if a blank username was passed to it.
+   - Fixed a bug that wouldn't display a techs name in the charts if they didn't have a space in their name.
+   - Added support for the Nexus 6.
+   - Fixed a bug that wouldn't show a ticket properly if the user entered "-->" in their ticket.
